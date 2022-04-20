@@ -16,3 +16,5 @@ Classement Page :
 
 Support Page :
 ![image](https://user-images.githubusercontent.com/67414697/164308466-7d9797ae-6365-4e0d-a8de-f4e0ccaed9c3.png)
+
+This Template Is Compatibility With A Phone
