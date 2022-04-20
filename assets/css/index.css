@@ -1,0 +1,457 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #1b1b1f;
+    font-family: "Montserrat", "Arial";
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 1%;
+    background-color: #1b1b1f;
+    border-top: 5px solid #ff0404;
+    border-bottom: 5px solid #ff0404;
+  }
+  
+  .logo img {
+    cursor: pointer;
+    max-height: 28px;
+  }
+  
+  .nav__links a,
+  .cta,
+  .overlay__content a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+  }
+  
+  .nav__links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav__links li {
+    padding: 0px 20px;
+  }
+  
+  .nav__links li a {
+    transition: color 0.3s ease 0s;
+  }
+  
+  .nav__links li a:hover {
+    color: #ff0404;
+  }
+  
+  .cta {
+    padding: 9px 25px;
+    background-color: #ff0404;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease 0s;
+  }
+  
+  .cta:hover {
+    background-color: #ff0404;
+  }
+  
+  /* Mobile Nav */
+  
+  .menu {
+    display: none;
+  }
+  
+  .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    background-color: #24252a;
+    overflow-x: hidden;
+    transition: width 0.5s ease 0s;
+  }
+  
+  .overlay--active {
+    width: 100%;
+  }
+  
+  .overlay__content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overlay a {
+    padding: 12px;
+    font-size: 36px;
+    display: block;
+    transition: color 0.3s ease 0s;
+  }
+  
+  .overlay a:hover,
+  .overlay a:focus {
+    color: #ff0404;
+  }
+  .overlay .close {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    color: #edf0f1;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlay a {
+      font-size: 20px;
+    }
+    .overlay .close {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .nav__links,
+    .cta {
+      display: none;
+    }
+    .menu {
+      display: initial;
+    }
+  }
+  
+  .slider-main-container {
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+  }
+  .slide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+  }
+  .slide.active {
+    display: flex;
+    background: #ff0404;
+  }
+  .caption-container,
+  .image-container {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    background: #1b1b1f;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .caption {
+    width: 70%;
+    margin: auto;
+  }
+  .caption h1 {
+    font-size: 40px;
+    font-family: "Verdana", sans-serif;
+    font-weight: bold;
+    letter-spacing: -3px;
+    margin: 0px;
+  }
+  .slide.active .caption h1 {
+    opacity: 0;
+    animation: caption-animation 0.5s ease forwards;
+    animation-delay: 0.6s;
+    color: #fff;
+  }
+  .caption p {
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    margin: 15px 0px 30px;
+    text-align: justify;
+    color: #fff;
+  }
+  .slide.active .caption p {
+    opacity: 0;
+    animation: caption-animation 0.5s ease forwards;
+    animation-delay: 0.8s;
+  }
+  .caption a {
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    padding: 10px 30px;
+    background: #1b1b1f;
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid #ff0404;
+    transition: 0.5s;
+  }
+  .caption a:hover {
+    background: #ff0404;
+  }
+  .slide.active .caption a {
+    opacity: 0;
+    animation: caption-animation 0.5s ease forwards;
+    animation-delay: 1.2s;
+  }
+  .image-container {
+    right: 0px;
+    background: transparent;
+  }
+  .image-container img {
+    width: 260px;
+    height: 260px;
+    margin: auto;
+    border-radius: 25px;
+    animation: img-animation 2s ease;
+  }
+  
+  .controls .prev,
+  .controls .next {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    margin: auto;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+  }
+  .controls .prev:hover,
+  .controls .next:hover {
+    opacity: 0.8;
+  }
+  .controls .prev {
+    bottom: 20px;
+    right: 380px;
+  }
+  .controls .next {
+    right: 330px;
+    bottom: 20px;
+  }
+  
+  .indicator {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 2;
+  }
+  .indicator div {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #1b1b1f;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    margin: 0px 3px;
+    cursor: pointer;
+  }
+  .indicator div.active {
+    background: #ff0404;
+  }
+  
+  @keyframes caption-animation {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  @keyframes img-animation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.imgf {
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+.features{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btnfeatures {
+  color: #fff;
+  padding: 0.8rem;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 3px solid #ff0404;
+  transition: 0.5s;
+  background: #1b1b1f;
+}
+
+.btnfeatures:hover {
+  background-color: #ff0404;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 0.7rem;
+  margin: auto;
+  min-width: 270px;
+  border: 3px solid #ff0404;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 32%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 28%;
+  }
+}
+
+.card {
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+}
+
+.card_title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+}
+
+.cgallery {
+	max-width: 100rem;
+	margin: 0 auto;
+	padding: 0 2rem 2rem;
+    padding-top: 15px;
+}
+
+.cgallery {
+	display: flex;
+	flex-wrap: wrap;
+	/* Compensate for excess margin on outer gallery flex items */
+	margin: -1rem -1rem;
+}
+
+.cgallery-item {
+	/* Minimum width of 24rem and grow to fit available space */
+	flex: 1 0 24rem;
+	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+	margin: 1rem;
+	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+}
+
+.cgallery-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease-out;
+}
+
+.cgallery-image:hover {
+	transform: scale(1.15);
+}
+
+@supports (display: grid) {
+	.cgallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+	}
+}
+  
+  .changelist {
+    width: 80%;
+    color: #fff;
+    display: block;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: 5px solid #ff0404;
+  }
+
+  .changelist h1{
+      font-size: 25px;
+  }
+
+  .classement {
+    width: 80%;
+    color: #fff;
+    display: block;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: 5px solid #ff0404;
+    text-align: center;
+  }
+
+  .classement h1{
+      font-size: 25px;
+  }
